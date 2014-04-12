@@ -10,9 +10,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<%-- <sql:query var="result" dataSource="jdbc/rukerttracker">
+<sql:query var="result" dataSource="jdbc/rukerttracker">
         SELECT * FROM containerinventory
-</sql:query> --%>
+</sql:query> 
         
         
     
@@ -28,19 +28,19 @@
 
         
             <div style="height:50%;overflow:auto;">
-            <table border="1">
-        <!-- column headers -->
-        <tr>
-        <c:forEach var="containerinventory" items="${result}">
-            <th><c:out value="${result}"/></th>
+           <table border="1">
+    <!-- column headers -->
+    <tr>
+        <c:forEach var="columnName" items="${result.columnNames}">
+            <th><c:out value="${columnName}"/></th>
         </c:forEach>
     </tr>
     <!-- column data -->
-    <c:forEach var="row" items="${result.containers}">
+    <c:forEach var="row" items="${result.rowsByIndex}">
         <tr>
-        <c:forEach var="column" items="${row}">
-            <td><c:out value="${column}"/></td>
-        </c:forEach>
+            <c:forEach var="column" items="${row}">
+                <td><c:out value="${column}"/></td>
+            </c:forEach>
         </tr>
     </c:forEach>
 </table>
